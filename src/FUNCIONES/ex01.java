@@ -113,7 +113,7 @@ public class ex01 {
                         System.out.print("Primero : ");
                         num_01 = Integer.parseInt(buffer.readLine());
                         factor(num_01);
-                        System.out.println("El factorial de " + num_01 + " es " + factor);
+                        System.out.println("El factorial de " + num_01 + " es " + num_01);
                         break;
                     case 8:
                         System.out.println("Cerrando el sistema");
