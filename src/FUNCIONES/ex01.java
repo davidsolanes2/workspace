@@ -112,8 +112,9 @@ public class ex01 {
                         System.out.println("===========================");
                         System.out.print("Primero : ");
                         num_01 = Integer.parseInt(buffer.readLine());
-                        factor(num_01);
-                        System.out.println("El factorial de " + num_01 + " es " + num_01);
+                        int num_03=0;
+                        num_03=factor(num_01);
+                        System.out.println("El factorial de " + num_01 + " es " + num_03);
                         break;
                     case 8:
                         System.out.println("Cerrando el sistema");
@@ -164,8 +165,8 @@ public class ex01 {
         return divisor;
     }
     public static int factor (int x){
-        int fact = 1;
-        for (int i=1; i<=x; x++) {
+       int fact=1;
+        for (int i=1; i<=x; i++) {
             fact = fact * i;
         }
         return fact;
