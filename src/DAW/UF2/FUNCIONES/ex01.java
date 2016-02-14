@@ -1,4 +1,4 @@
-package FUNCIONES;
+package DAW.UF2.FUNCIONES;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
