@@ -12,42 +12,48 @@ public class ex05 {
     public static void main(String[] args) {
 
         try {
-            int[]array_02 = new int[5];
-            int num_01 = 5;
+            int[]result={0,0,0};
+            int[]array_aux=new int[5];
             int opcio = 0;
+            array_aux=tipos_01();
             while (opcio != 4) {
                 opcio = menu();
+
 
                 switch (opcio) {
                     case 1:
                         System.out.println(" MOSTRAR TIPOS MUERTE ");
                         System.out.println("======================");
-                        array_02=tipos_01();
-                        imprimir(array_02);
+                        imprimir(array_aux);
 
                         break;
                     case 2:
                         System.out.println("   CONTAR TIPOS   ");
                         System.out.println("==================");
-                        array_02=estadistica(array_02);
+                        control(array_aux, result);
 
-                        for (int i = 0; i<1; i++) {
-                            if (array_02[0]!=0) {
-                                System.out.println("Hay " + array_02[0] + " muertes por Ataque Enemigo");
+                            if (result[0]!=0) {
+                                System.out.println("Hay " + result[0] + " muertes por Ataque Enemigo");
                             }
-                            if (array_02[1]!=0) {
-                                System.out.println("Hay " + array_02[1] + " muertes por Caida");
+                            if (result[1]!=0) {
+                                System.out.println("Hay " + result[1] + " muertes por Caida");
                             }
-                            if (array_02[2]!=0) {
-                                System.out.println("Hay " + array_02[2] + " muertes por Bomba");
+                            if (result[2]!=0) {
+                                System.out.println("Hay " + result[2] + " muertes por Bomba");
                             }
-                        }
+
                         System.out.println("");
                         break;
                     case 3:
                         System.out.println("  REINICIAR ARRAY  ");
                         System.out.println("===================");
-                        array_02=tipos_02();
+                        for (int i=0;i<array_aux.length; i++) {
+                            array_aux[i]=0;
+                        }
+                        for (int j=0;j<result.length; j++) {
+                            result[j]=0;
+                        }
+                        array_aux=tipos_01();
                         break;
                     case 4:
                         System.out.println("Cerrando el sistema");
@@ -86,7 +92,7 @@ public class ex05 {
     }
 
 
-    public static int[]tipos_01 () {                  //autollenado del array con numeros, de los tipos de muerte
+    public static int[]tipos_01() {                  //autollenado del array con numeros, de los tipos de muerte
         int tipos_02[] = new int [5];
         for (int i=0; i<tipos_02.length; i++) {
             tipos_02[i] = (int)(Math.random()*3);  //Ataque enemigo = 0/A, Caida = 1/B, Bomba = 2/C
@@ -100,31 +106,21 @@ public class ex05 {
         }
     }
 
-    public static int[]estadistica(int[]tipos_03) {  //estadistica de muertes
+    public static int[] control(int[]tipos_03, int result[]) {  //estadistica de muertes
         int cont_01=0, cont_02=0, cont_03=0;
-
+        //int[]tipos_03=new int[5];
         for (int i=0; i<tipos_03.length; i++) {
             if(tipos_03[i]==0) {
-                cont_01++;
+                result[0]++;
             }
             else if(tipos_03[i]==1) {
-                cont_02++;
+                result[1]++;
             }
             else if(tipos_03[i]==2) {
-                cont_03++;
+                result[2]++;
             }
         }
-        tipos_03[0]= cont_01;
-        tipos_03[1]= cont_02;
-        tipos_03[2]= cont_03;
-        return tipos_03;
+        return result;
     }
 
-    public static int[]tipos_02 () {                  //autollenado del array con numeros, de los tipos de muerte
-        int tipos_02[] = new int [5];
-        for (int i=0; i<tipos_02.length; i++) {
-            tipos_02[i] = (int)(Math.random()*3);  //Ataque enemigo = 0/A, Caida = 1/B, Bomba = 2/C
-        }
-        return tipos_02;
-    }
 }
