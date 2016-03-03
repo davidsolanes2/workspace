@@ -15,7 +15,7 @@ public class ex05 {
             int[]result={0,0,0};
             int[]array_aux=new int[5];
             int opcio = 0;
-            array_aux=tipos_01();
+            array_aux=crearArray();
             while (opcio != 4) {
                 opcio = menu();
 
@@ -47,13 +47,10 @@ public class ex05 {
                     case 3:
                         System.out.println("  REINICIAR ARRAY  ");
                         System.out.println("===================");
-                        for (int i=0;i<array_aux.length; i++) {
-                            array_aux[i]=0;
-                        }
                         for (int j=0;j<result.length; j++) {
                             result[j]=0;
                         }
-                        array_aux=tipos_01();
+                        array_aux=reiniciar(array_aux);
                         break;
                     case 4:
                         System.out.println("Cerrando el sistema");
@@ -74,7 +71,6 @@ public class ex05 {
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 
         int opcio = 0;
-
             System.out.println("");
             System.out.println("  ESTADISTICA DEL VIDEOJUEGO  ");
             System.out.println("------------------------------");
@@ -92,35 +88,48 @@ public class ex05 {
     }
 
 
-    public static int[]tipos_01() {                  //autollenado del array con numeros, de los tipos de muerte
-        int tipos_02[] = new int [5];
-        for (int i=0; i<tipos_02.length; i++) {
-            tipos_02[i] = (int)(Math.random()*3);  //Ataque enemigo = 0/A, Caida = 1/B, Bomba = 2/C
+    public static int[]crearArray() {                  //autollenado del array con numeros, de los tipos de muerte
+        int tipos[] = new int [5];
+        for (int i=0; i<tipos.length; i++) {
+            tipos[i] = (int)(Math.random()*3);  //Ataque enemigo = 0/A, Caida = 1/B, Bomba = 2/C
         }
-        return tipos_02;
+        return tipos;
     }
 
-    public static void imprimir (int tipos_01[]) {
-        for (int i = 0; i < tipos_01.length; i++) {
-            System.out.println(tipos_01[i]);
+    public static void imprimir (int tipos[]) {
+        for (int i = 0; i < tipos.length; i++) {
+            System.out.println(tipos[i]);
         }
     }
 
-    public static int[] control(int[]tipos_03, int result[]) {  //estadistica de muertes
-        int cont_01=0, cont_02=0, cont_03=0;
-        //int[]tipos_03=new int[5];
-        for (int i=0; i<tipos_03.length; i++) {
-            if(tipos_03[i]==0) {
+    public static int[] control(int[]tipos, int result[]) {  //estadistica de muertes
+               for (int i=0; i<tipos.length; i++) {
+            if(tipos[i]==0) {
                 result[0]++;
             }
-            else if(tipos_03[i]==1) {
+            else if(tipos[i]==1) {
                 result[1]++;
             }
-            else if(tipos_03[i]==2) {
+            else if(tipos[i]==2) {
                 result[2]++;
             }
         }
         return result;
     }
+
+    public static int[] borrar(int[]tipos) {
+        tipos = new int[tipos.length];
+
+        return tipos;
+    }
+
+    public static int[] reiniciar( int[] tipos){
+        tipos = borrar(tipos);
+        tipos = crearArray();
+
+        return tipos;
+    }
+
+
 
 }

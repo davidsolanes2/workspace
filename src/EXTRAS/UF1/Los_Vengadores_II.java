@@ -2,6 +2,8 @@ package EXTRAS.UF1;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 
 /**
  * Created by david on 4/02/16.
@@ -15,10 +17,21 @@ public class Los_Vengadores_II {
 
         int [][] array_01 = new int[4][5];
 
+        ArrayList<Double> heroe_01 = new ArrayList<Double>();  //un array para cada heroe para controlar su evaluacion
+        ArrayList<Double> heroe_02 = new ArrayList<Double>();
+        ArrayList<Double> heroe_03 = new ArrayList<Double>();
+        ArrayList<Double> heroe_04 = new ArrayList<Double>();
+
+        ArrayList<String> vengador = new ArrayList<String>();  //una array para recoger la lista de heroes
+        vengador.add("Iron Man");
+        vengador.add("Capitan America");
+        vengador.add("Thor");
+        vengador.add("Viuda Negra");
+
         try {
             BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
             int opcio = 0;
-
+            int opcio_01=0;
             while (opcio != 5) {
                 System.out.println("");
                 System.out.println("          LOS VENGADORES (segunda parte) ");
@@ -69,39 +82,114 @@ public class Los_Vengadores_II {
                         //filas heroes
                         //Superheroes = Iron Man, Capitan America,Thor y Viuda Negra (4)
                         //Habilidades = 5 habilidades
+                        System.out.println("");
                         System.out.println("   EVALUACIONES   ");
                         System.out.println("------------------");
-
-
-                     //una variable para cada heroe
-
-                        Double [] heroe_01 = new Double[10];
-                        Double [] heroe_02 = new Double[10];
-                        Double [] heroe_03 = new Double[10];
-                        Double [] heroe_04 = new Double[10];
-
                         for (int i = 0; i < array_01.length; i++) {
-                            heroe_01[i] = array_01[i][0]*0.03 + array_01[i][1]*0.03 + array_01[i][2]*0.2 + array_01[i][3]*0.1 + array_01[i][4]*0.01;
-                            heroe_02[i] = array_01[i][0]*0.03 + array_01[i][1]*0.03 + array_01[i][2]*0.2 + array_01[i][3]*0.1 + array_01[i][4]*0.01;
+                            if (i==0){
+                                heroe_01.add(array_01[i][0]*0.03 + array_01[i][1]*0.03 + array_01[i][2]*0.2 + array_01[i][3]*0.1 + array_01[i][4]*0.1);
+                            }
+                            if (i==1) {
+                                heroe_02.add(array_01[i][0]*0.03 + array_01[i][1]*0.03 + array_01[i][2]*0.2 + array_01[i][3]*0.1 + array_01[i][4]*0.01);
+                            }
+                            if (i==2) {
+                                heroe_03.add(array_01[i][0]*0.03 + array_01[i][1]*0.03 + array_01[i][2]*0.2 + array_01[i][3]*0.1 + array_01[i][4]*0.01);
+                            }
+                            if (i==3) {
+                                heroe_04.add(array_01[i][0]*0.03 + array_01[i][1]*0.03 + array_01[i][2]*0.2 + array_01[i][3]*0.1 + array_01[i][4]*0.01);
+                            }
                         }
-
-
-                        System.out.print(heroe_01);
-
-
-
-                        System.out.println("Iron Man        = " + heroe_01);
-                        System.out.println("Capitan America = " + heroe_02);
-                        System.out.println("Thor            = " + heroe_03);
-                        System.out.println("Viuda Negra     = " + heroe_04);
+                        System.out.println("Iron Man        = " + (heroe_01));
+                        System.out.println("Capitan America = " + (heroe_02));
+                        System.out.println("Thor            = " + (heroe_03));
+                        System.out.println("Viuda Negra     = " + (heroe_04));
                         break;
                     case 3:
-
+                        System.out.println("");
+                        System.out.println("   ANALISIS DE MISIONES   ");
+                        System.out.println("--------------------------");
+                        int valor = 0;
+                        System.out.print("Introduzca valoracion : ");
+                        valor = Integer.parseInt(buffer.readLine());
+                        //comparar valor con los valors de heroes
+                        if (heroe_01.get(0)>valor) {
+                            System.out.println("Va a participar : Iron Man con " + (heroe_01) + " puntos");
+                        }
+                        else if (heroe_02.get(0)>valor) {
+                            System.out.println("Va a participar : Capitan America con " + (heroe_02) + " puntos");
+                        }
+                        else if (heroe_03.get(0)>valor) {
+                            System.out.println("Va a participar : Thor "                + (heroe_03) + " puntos");
+                        }
+                        else if ((heroe_01.get(0)+heroe_02.get(0))>valor) {
+                            System.out.println("Va a participar : Iron Man con "        + (heroe_01) + " puntos");
+                            System.out.println("Va a participar : Capitan America con " + (heroe_02) + " puntos");
+                        }
+                        else if ((heroe_02.get(0)+heroe_03.get(0))>valor) {
+                            System.out.println("Va a participar : Capitan America con " + (heroe_02) + " puntos");
+                            System.out.println("Va a participar : Thor "                + (heroe_03) + " puntos");
+                        }
+                        else if ((heroe_01.get(0)+heroe_03.get(0))>valor) {
+                            System.out.println("Va a participar : Iron Man con "        + (heroe_01) + " puntos");
+                            System.out.println("Va a participar : Thor "                + (heroe_03) + " puntos");
+                        }
+                        else if ((heroe_01.get(0)+heroe_02.get(0)+heroe_03.get(0))>valor) {
+                            System.out.println("Va a participar : Iron Man con "        + (heroe_01) + " puntos");
+                            System.out.println("Va a participar : Capitan America con " + (heroe_02) + " puntos");
+                            System.out.println("Va a participar : Thor "                + (heroe_03) + " puntos");
+                        }
+                        else {
+                            System.out.println("Va a participar : Iron Man con "        + (heroe_01) + " puntos");
+                            System.out.println("Va a participar : Capitan America con " + (heroe_02) + " puntos");
+                            System.out.println("Va a participar : Thor "                + (heroe_03) + " puntos");
+                            System.out.println("Va a participar : Viuda Negra "         + (heroe_04) + " puntos");
+                            System.out.println("");
+                            System.out.println("Es una mision arriesgada, hay que llevar mucho cuidado");
+                        } //vengadores en un array y comparar
                         break;
                     case 4:
+                        System.out.print("Su nombre ? : ");
+                        String vengador_01 = (buffer.readLine());
+                        for (int i=0; i<vengador.size();i++) {
+                            if (vengador_01==vengador.get(i)) {
+                                while (opcio_01 != 5) {
+                                    System.out.println("");
+                                    System.out.println("          REPONER HABILIDADES          ");
+                                    System.out.println("---------------------------------------");
+                                    System.out.println("");
+                                    System.out.println("1.- Mejorar fuerza           ");
+                                    System.out.println("2.- Mejorar inteligencia     ");
+                                    System.out.println("3.- Mejorar velocidad        ");
+                                    System.out.println("4.- Mejorar intuición        ");
+                                    System.out.println("5.- Mejorar inmortalidad     ");
+                                    System.out.println(" ");
+                                    System.out.println("");
+                                    System.out.print("Seleccione una opcion : ");
+                                    opcio_01 = Integer.parseInt(buffer.readLine());
 
+                                    switch (opcio_01) {
+                                        case 1:
+                                            heroe_01.set(0, 1.0);
+                                            break;
+                                        case 2:
+                                            break;
+                                        case 3:
+                                            break;
+                                        case 4:
+                                            break;
+                                        case 5:
+
+                                            break;
+                                    }
+                                }
+                            }
+                            else {
+                                System.out.println("Usted no esta incluido");
+                            }
+                        }
                         break;
                     case 5:
+                        System.out.println("");
                         System.out.println("El mundo sigue a salvo con nosostros, aunque seamos menos");
                         break;
                     default:
