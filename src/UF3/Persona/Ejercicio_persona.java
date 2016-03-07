@@ -1,4 +1,4 @@
-package UF3;
+package UF3.Persona;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -37,17 +37,37 @@ public class Ejercicio_persona {
                     case 2:
                         System.out.println(" MODIFICACION ");
                         System.out.println("==============");
+                        //pedir nombre
+                        System.out.print("Nombre a buscar : ");
+                        String nombre_01 = (buffer.readLine());
+
+
 
                         break;
                     case 3:
+                        int a=0;
                         System.out.println(" PESO IDEAL ");
                         System.out.println("=============");
+                        //pedir nombre y buscar el el registro
+                        System.out.print("Nombre a buscar : ");
+                        String nombre_02 = (buffer.readLine());
 
+
+                        Persona_02.calculaIMC();
+                        if (a == 0) {
+                            System.out.print("SI Esta en su peso ideal");
+                         }
+                        else if(a==1) {
+                            System.out.print("NO Esta en su peso ideal");
+                        }
+                        else if(a==-1) {
+                            System.out.print("NO Esta en su peso ideal");
+                        }
                         break;
                     case 4:
                         System.out.println(" MAYOR DE EDAD ");
                         System.out.println("===============");
-
+                        //pedir nombre
                         break;
                     case 5:
                         System.out.println(" LISTAR PERSONAL ");

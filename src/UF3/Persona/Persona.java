@@ -1,4 +1,4 @@
-package UF3;
+package UF3.Persona;
 
 /**
  * Created by david on 29/02/16.

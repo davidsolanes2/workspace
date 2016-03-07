@@ -2,6 +2,7 @@ package EXTRAS.UF1;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
@@ -28,10 +29,15 @@ public class Los_Vengadores_II {
         vengador.add("Thor");
         vengador.add("Viuda Negra");
 
+        DecimalFormat df = new DecimalFormat("###.##");
+
+
+
         try {
             BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
             int opcio = 0;
-            int opcio_01=0;
+
+            int opcio_02=0;
             while (opcio != 5) {
                 System.out.println("");
                 System.out.println("          LOS VENGADORES (segunda parte) ");
@@ -99,10 +105,10 @@ public class Los_Vengadores_II {
                                 heroe_04.add(array_01[i][0]*0.03 + array_01[i][1]*0.03 + array_01[i][2]*0.2 + array_01[i][3]*0.1 + array_01[i][4]*0.01);
                             }
                         }
-                        System.out.println("Iron Man        = " + (heroe_01));
-                        System.out.println("Capitan America = " + (heroe_02));
-                        System.out.println("Thor            = " + (heroe_03));
-                        System.out.println("Viuda Negra     = " + (heroe_04));
+                        System.out.println("Iron Man        = " + df.format((heroe_01.get(0))));
+                        System.out.println("Capitan America = " + df.format((heroe_02.get(0))));
+                        System.out.println("Thor            = " + df.format((heroe_03.get(0))));
+                        System.out.println("Viuda Negra     = " + df.format((heroe_04.get(0))));
                         break;
                     case 3:
                         System.out.println("");
@@ -150,43 +156,64 @@ public class Los_Vengadores_II {
                     case 4:
                         System.out.print("Su nombre ? : ");
                         String vengador_01 = (buffer.readLine());
+                        boolean encontrado=false;
                         for (int i=0; i<vengador.size();i++) {
-                            if (vengador_01==vengador.get(i)) {
-                                while (opcio_01 != 5) {
-                                    System.out.println("");
-                                    System.out.println("          REPONER HABILIDADES          ");
-                                    System.out.println("---------------------------------------");
-                                    System.out.println("");
-                                    System.out.println("1.- Mejorar fuerza           ");
-                                    System.out.println("2.- Mejorar inteligencia     ");
-                                    System.out.println("3.- Mejorar velocidad        ");
-                                    System.out.println("4.- Mejorar intuición        ");
-                                    System.out.println("5.- Mejorar inmortalidad     ");
-                                    System.out.println(" ");
-                                    System.out.println("");
-                                    System.out.print("Seleccione una opcion : ");
-                                    opcio_01 = Integer.parseInt(buffer.readLine());
-
-                                    switch (opcio_01) {
-                                        case 1:
-                                            heroe_01.set(0, 1.0);
-                                            break;
-                                        case 2:
-                                            break;
-                                        case 3:
-                                            break;
-                                        case 4:
-                                            break;
-                                        case 5:
-
-                                            break;
-                                    }
-                                }
-                            }
-                            else {
-                                System.out.println("Usted no esta incluido");
+                            if (vengador.get(i).equals(vengador_01)) {
+                                encontrado = true;
                             }
                         }
+                        if (encontrado==true) {
+                            while (opcio_02 != 6) {
+                                 System.out.println("");
+                                 System.out.println("          REPONER HABILIDADES          ");
+                                 System.out.println("---------------------------------------");
+                                 System.out.println("");
+                                 System.out.println("1.- Mejorar fuerza           ");
+                                 System.out.println("2.- Mejorar inteligencia     ");
+                                 System.out.println("3.- Mejorar velocidad        ");
+                                 System.out.println("4.- Mejorar intuición        ");
+                                 System.out.println("5.- Mejorar inmortalidad     ");
+                                 System.out.println("6.- Salir ");
+                                 System.out.println("");
+                                 System.out.print("Seleccione una opcion : ");
+                                 opcio_02 = Integer.parseInt(buffer.readLine());
+
+                                 switch (opcio_02) {
+                                     case 1:
+                                         if (vengador_01.equals("Iron Man")) {
+                                           heroe_01.add(0, (heroe_01.get(0) + 1.0));
+                                         }
+                                         if (vengador_01.equals("Capitan America")) {
+                                           heroe_02.add(0, (heroe_02.get(0) + 1.0));
+                                         }
+                                         if (vengador_01.equals("Thor")) {
+                                           heroe_03.add(0, (heroe_03.get(0) + 1.0));
+                                         }
+                                         if (vengador_01.equals("Viuda Negra")) {
+                                           heroe_04.add(0, (heroe_04.get(0) + 1.0));
+                                         }
+                                         break;
+                                     case 2:
+                                         break;
+                                     case 3:
+                                         break;
+                                     case 4:
+                                         break;
+                                     case 5:
+                                         break;
+                                     case 6:
+                                         System.out.println("Abandonando Habilidades");
+                                         break;
+                                     default:
+                                         System.out.println("Opcion incorrecta, seleccione de 1 a 6");
+                                    }
+                                }
+                        }
+
+                        else  {
+                           System.out.println("Usted no esta incluido");
+                        }
+
                         break;
                     case 5:
                         System.out.println("");
